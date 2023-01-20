@@ -1,0 +1,51 @@
+C51 COMPILER V9.60.0.0   SOES                                                              01/18/2023 10:53:03 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SOES
+OBJECT MODULE PLACED IN .\Objects\SOES.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE C:\Users\Admin\Downloads\Compressed\washing-machine-8051-master\SOES.c O
+                    -PTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\SOES.lst) TABS(2) OBJECT(.\Objects\SOES.obj)
+
+line level    source
+
+   1          #include "Main.h"
+   2          #include "SOES.h"
+   3          
+   4          tByte TL0_Reload = 0;
+   5          tByte TH0_Reload = 0;
+   6          
+   7          extern void SOES_voidInitialize(){
+   8   1        TMOD |= 0x01;
+   9   1        TL0 = 0xB0;
+  10   1        TH0 = 0x3C;
+  11   1        EA = 1;   //enable global interrupts
+  12   1        ET0 = 1;  //enable timer0 interrupt_
+  13   1        TF0 = 0;  //clear timer0 ov flag
+  14   1        TR0 = 1;  //start timer0
+  15   1      }
+  16          
+  17          extern void SOES_voidGoToSleep(void){
+  18   1        PCON |= 0x01;
+  19   1      }
+  20          
+  21          void SOES_ISR() interrupt INTERRUPT_Timer_0_Overflow {
+  22   1        TL0 = 0xB0;
+  23   1        TH0 = 0x3C;
+  24   1        //TF0 = 0;
+  25   1        //TR0 = 1;
+  26   1        run();
+  27   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     87    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

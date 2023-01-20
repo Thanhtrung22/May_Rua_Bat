@@ -1,0 +1,1 @@
+perl dti_rb_gen_script.pl ../doc/reg_block_def.xlsx

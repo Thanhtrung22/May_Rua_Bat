@@ -1,0 +1,64 @@
+/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/regs.v {1 {vlog -work work -vopt -stats=none /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/regs.v
+QuestaSim-64 vlog 10.7d_1 Compiler 2019.05 May  8 2019
+-- Compiling module regs
+
+Top level modules:
+	regs
+
+} {} {}} /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/rb_apb_bridge.sv {1 {vlog -work work -vopt -sv -stats=none /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/rb_apb_bridge.sv
+QuestaSim-64 vlog 10.7d_1 Compiler 2019.05 May  8 2019
+-- Compiling module rb_apb_bridge
+
+Top level modules:
+	rb_apb_bridge
+
+} {} {}} /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/warm_up.v {1 {vlog -work work -vopt -stats=none /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/warm_up.v
+QuestaSim-64 vlog 10.7d_1 Compiler 2019.05 May  8 2019
+-- Compiling module warm_up
+
+Top level modules:
+	warm_up
+
+} {} {}} /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/controller.v {1 {vlog -work work -vopt -stats=none /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/controller.v
+QuestaSim-64 vlog 10.7d_1 Compiler 2019.05 May  8 2019
+-- Compiling module controller
+
+Top level modules:
+	controller
+
+} {} {}} /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/counter.v {1 {vlog -work work -vopt -stats=none /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/counter.v
+QuestaSim-64 vlog 10.7d_1 Compiler 2019.05 May  8 2019
+-- Compiling module counter
+
+Top level modules:
+	counter
+
+} {} {}} /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/register_block.sv {1 {vlog -work work -vopt -sv -stats=none /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/register_block.sv
+QuestaSim-64 vlog 10.7d_1 Compiler 2019.05 May  8 2019
+-- Compiling module register_block
+
+Top level modules:
+	register_block
+
+} {} {}} /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/smart_toilet_system_top.v {1 {vlog -work work -vopt -stats=none /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/smart_toilet_system_top.v
+QuestaSim-64 vlog 10.7d_1 Compiler 2019.05 May  8 2019
+-- Compiling module smart_toilet_system_top
+
+Top level modules:
+	smart_toilet_system_top
+
+} {} {}} /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/core.v {1 {vlog -work work -vopt -stats=none /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/core.v
+QuestaSim-64 vlog 10.7d_1 Compiler 2019.05 May  8 2019
+-- Compiling module core
+
+Top level modules:
+	core
+
+} {} {}} /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/sim/src/tb_core.v {1 {vlog -work work -vopt -stats=none /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/sim/src/tb_core.v
+QuestaSim-64 vlog 10.7d_1 Compiler 2019.05 May  8 2019
+-- Compiling module tb_core
+
+Top level modules:
+	tb_core
+
+} {} {}}

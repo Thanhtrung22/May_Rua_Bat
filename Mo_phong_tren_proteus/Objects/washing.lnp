@@ -1,0 +1,9 @@
+".\Objects\STARTUP.obj",
+".\Objects\Delay.obj",
+".\Objects\Main.obj",
+".\Objects\Seven_segment.obj",
+".\Objects\SOES.obj",
+".\Objects\Switch.obj",
+".\Objects\Washer.obj" 
+TO ".\Objects\washing" 
+PRINT(".\Listings\washing.m51") RAMSIZE(256) 

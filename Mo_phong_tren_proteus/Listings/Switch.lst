@@ -1,0 +1,79 @@
+C51 COMPILER V9.60.0.0   SWITCH                                                            01/18/2023 10:53:03 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SWITCH
+OBJECT MODULE PLACED IN .\Objects\Switch.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE C:\Users\Admin\Downloads\Compressed\washing-machine-8051-master\Switch.c
+                    - OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Switch.lst) TABS(2) OBJECT(.\Objects\Switch.obj)
+
+line level    source
+
+   1          /*------------------------------------------------------------*-
+   2          seven_segment.C (v1.00)
+   3          -------------------------------------------------------------
+   4          Simple library for displaying digits on 7 segment.
+   5          
+   6          -*------------------------------------------------------------*/
+   7          #include "Main.h"
+   8          #include "Port.h"
+   9          #include "Switch.h"
+  10          #include "Delay.h"
+  11          
+  12          
+  13          bit SWITCH_state(int switch_number, tByte debounce_period)
+  14          {
+  15   1        
+  16   1        bit Return_value = SWITCH_NOT_PRESSED;
+  17   1        
+  18   1        if (SWITCH_current_state(switch_number) == 0)
+  19   1        {
+  20   2          // Switch is pressed
+  21   2          // Debounce – just wait...
+  22   2          DELAY_loop_ms(debounce_period);
+  23   2          // Check switch again
+  24   2          if (SWITCH_current_state(switch_number) == 0)
+  25   2          {
+  26   3            Return_value = SWITCH_PRESSED;
+  27   3          }
+  28   2        }
+  29   1        // Now return switch value
+  30   1        return Return_value;
+  31   1      }
+  32          
+  33          bit SWITCH_current_state(int switch_number)
+  34          {
+  35   1        if(switch_number == 1)
+  36   1        {
+  37   2          up_pin = 1;
+  38   2          return  up_pin; 
+  39   2        } else if(switch_number == 2)
+  40   1        {
+  41   2          down_pin = 1;
+  42   2          return  down_pin; 
+  43   2        } else if(switch_number == 3)
+  44   1        {
+  45   2          start_pin = 1;
+  46   2          return  start_pin;  
+  47   2        } else {
+  48   2          return 0;
+  49   2        }
+  50   1      
+  51   1      }
+  52          
+  53          //------------------- END OF FILE --------------------------------
+
+C51 COMPILER V9.60.0.0   SWITCH                                                            01/18/2023 10:53:03 PAGE 2   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     69    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

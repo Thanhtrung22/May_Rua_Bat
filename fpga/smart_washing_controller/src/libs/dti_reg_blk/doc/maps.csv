@@ -1,0 +1,4 @@
+Block Name,BlockMap Name,BlockMap Description,BlockMap is default,BlockMap Address Offset,BlockMap Instance Name,BlockMap Instance Address,BlockMap Instance Access,BlockMap Parameter Name,BlockMap Parameter Value,BlockMap Parameter Description,Project Parameter Name,Project Parameter Value,Project Parameter Description
+regs,map,,,,reg_data,0x0,,,,,,,
+regs,map,,,,reg_ctrl,0x4,,,,,,,
+regs,map,,,,reg_stt,0x8,,,,,,,

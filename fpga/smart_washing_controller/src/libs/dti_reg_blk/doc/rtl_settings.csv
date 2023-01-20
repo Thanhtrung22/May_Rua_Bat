@@ -1,0 +1,71 @@
+Block Name,Block Parameter Name,Block Parameter Value,Block Parameter Description
+regs,rtl.LANGUAGE,VLOG_2005,"Language dialect to generate (VLOG_2005, VHDL_93)"
+regs,rtl.BUS_TYPE,NONE,Bus bridge required
+// Declarations & Types,,NONE,
+regs,rtl.DECLARE_INFERRED_SIGNALS,TRUE,Controls if declarations are automatically inferred for signals used in user-entered conditions
+regs,rtl.DEFAULT_SCALAR_INPUT_TYPE,wire,Default type for scalar inputs
+regs,rtl.DEFAULT_SCALAR_OUTPUT_TYPE,reg,Default type for scalar outputs
+regs,rtl.DEFAULT_VECTOR_INPUT_TYPE,wire,Default type for array inputs
+regs,rtl.DEFAULT_VECTOR_OUTPUT_TYPE,reg,Default type for array outputs
+regs,rtl.INCLUDE_FILES,,Verilog include file/s to insert into generated RTL block
+regs,rtl.DEFAULT_RDATA_NAME,def_rdata_val,Default read data constant name
+regs,rtl.DEFAULT_RDATA_VALUE,0,"Default read data value for reserved fields, write-only fields, unassigned fields and illegal read addresses."
+regs,rtl.DEFAULT_FIELD,def_fld,Default field name for registers with no fields
+// Clock & Reset,,,
+regs,rtl.CLOCK,clk,Generic Bus clock name
+regs,rtl.CLOCK_EDGE,POSITIVE,Active clock edge
+regs,rtl.RESET,reset_n,Generic Bus reset name
+regs,rtl.RESET_LEVEL,LOW,Active reset level
+regs,rtl.RESET_STYLE,ASYNC,Reset style
+regs,rtl.ALT_RESET_NAME,alt_reset,Alternative register reset name
+regs,rtl.ALT_RESET_STYLE,ASYNC,Synchronous or Asynchronous alternative register reset
+regs,rtl.ALT_RESET_ACTIVE_LEVEL,LOW,Alternative register reset active level
+regs,rtl.ALT_RESET_BLOCK_LABEL_PREFIX,ret_,Alternative register reset process prefix
+// Naming Conventions,,,
+regs,rtl.FILE_NAME,%(BLOCK_NAME).%(LANG_FILE_EXTENSION),Naming convention for generated RTL file
+regs,rtl.FIELD_NAMING,%(FIELD_NAME)_%(REGISTER_INSTANCE_NAME),Naming convention for field signals/ports
+regs,rtl.VHDL_INTERNAL_SUFFIX,_buf,Suffix added to indicate the internally readable version of a VHDL field.
+regs,rtl.FIELD_INPUT_SUFFIX,_ip,Default suffix used for auto-generated input ports/signals
+regs,rtl.FIELD_INPUT_RW1C_SUFFIX,_clr,Suffix used for auto-generated input ports/signals for RW1C access fields
+regs,rtl.FIELD_INPUT_RW0C_SUFFIX,_clr_n,Suffix used for auto-generated input ports/signals for RW0C access fields
+regs,rtl.FIELD_INPUT_RW1S_SUFFIX,_set,Suffix used for auto-generated input ports/signals for RW1S access fields
+regs,rtl.FIELD_INPUT_RW0S_SUFFIX,_set_n,Suffix used for auto-generated input ports/signals for RW0S access fields
+regs,rtl.QUEUED_FIELD_SUFFIX,_queued,Prefix added to indicate the queued version of a field.
+regs,rtl.ARRAY_QUALIFIER,,Qualifier for multi-dimensional arrays.
+// Case,,,
+regs,rtl.IDENTIFIER_CASE,AS_IS,Specifies the case to use for identifiers (apart from parameters which should always be upper case).
+regs,rtl.CONSTANT_CASE,UPPER,Specifies the case for VHDL constants
+regs,rtl.PARAMETER_CASE,UPPER,Specifies the case for Verilog parameters
+regs,rtl.LOCALPARAM_CASE,UPPER,Specifies the case for Verilog local params
+regs,rtl.BLOCK_LABEL_CASE,UPPER,Specifies the case for always/process block labels
+regs,rtl.VHDL_KEYWORD_CASE,UPPER,Specifies the case for VHDL keywords
+regs,rtl.VHDL_IEEE_REFERENCE_CASE,LOWER,"Specifies the case for VHDL IEEE references (library, packages, types)"
+// Bus Settings,,,
+regs,rtl.READ_MUX_INPUT_BUS_PREFIX,mux_,"The prefix for the mux inputs for each register with read access.
+This prefix is added to the register name
+ie The used signal name is <read mux input bus prefix><register name>"
+regs,rtl.WRITE_ACKNOWLEDGE,wack,Generic Bus Write Acknowledge name
+regs,rtl.READ_ACKNOWLEDGE,rack,Generic Bus Read Acknowledge name
+regs,rtl.WRITE_ENABLE_PREFIX,wen_,"Generic Bus Write Enable prefix.
+Prefix for the write enable signal for each register with write access.
+This prefix is added to the register name
+ie The used signal name is <write enable prefix><register name>"
+regs,rtl.READ_ENABLE_PREFIX,ren_,"Generic Bus Read Enable prefix.
+Prefix for the read enable signal for each register.
+This prefix is added to the register name
+ie The used signal name is <read enable prefix><register name>"
+regs,rtl.WADDR,waddr,Generic Bus Write Address Bus name
+regs,rtl.RADDR,raddr,Generic Bus Read Address Bus name
+regs,rtl.WDATA,wdata,Generic Bus Write Data Bus name
+regs,rtl.RDATA,rdata,Generic Bus Read Data Bus name
+regs,rtl.WSTROBE,wstrobe,Generic Bus Write Strobe name
+regs,rtl.RSTROBE,rstrobe,Generic Bus Read Strobe name
+regs,rtl.WADDRERR,waddrerr,Generic Bus Write Address Error name
+regs,rtl.RADDRERR,raddrerr,Generic Bus Read Address Error name
+// Pipeline Parameters for VHDL output only,,,
+regs,rtl.PIPELINE_WRITE_STAGES,0,Defines the number of pipelining stages for write enable decoding
+regs,rtl.PIPELINE_WRITE_MUX_SIZES,4 4,"Defines the output size of decoders required in each write pipelining mux level.  
+Numbers should be provided for each level separated by space and starting with level 1"
+regs,rtl.PIPELINE_READ_STAGES,0,Defines the number of pipelining stages for read multiplexing.
+regs,rtl.PIPELINE_READ_MUX_SIZES,4 4,"Defines the input size of multiplexers required in each read pipelining mux level. 
+Numbers should be provided for each level separated by space and starting with level 1"

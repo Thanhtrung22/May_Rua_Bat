@@ -1,0 +1,153 @@
+C51 COMPILER V9.60.0.0   WASHER                                                            01/18/2023 10:53:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE WASHER
+OBJECT MODULE PLACED IN .\Objects\Washer.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE C:\Users\Admin\Downloads\Compressed\washing-machine-8051-master\Washer.c
+                    - OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Washer.lst) TABS(2) OBJECT(.\Objects\Washer.obj)
+
+line level    source
+
+   1          #include "Main.h"
+   2          #include "Port.h"
+   3          #include "Washer.h"
+   4          
+   5          // PROGRAMS AVAILABLE
+   6          tByte program_dry[] = {DRY, REPEAT, FINISH};
+   7          
+   8          tByte program_wash[] = {ADD_DETERGENT, ADD_WATER, HEAT, SPIN_MOTOR, TOGGLE_MOTOR, DRAIN_WATER, DRY, REPEAT
+             -, FINISH};
+   9          
+  10          tByte program_light_wash[] = {ADD_DETERGENT, ADD_WATER, HEAT, TOGGLE_MOTOR, DRAIN_WATER, DRY, REPEAT, FINI
+             -SH};
+  11          
+  12          tByte program_very_light_wash[] = {ADD_DETERGENT, ADD_WATER, HEAT, SPIN_MOTOR, DRAIN_WATER, DRY, REPEAT, F
+             -INISH};
+  13          
+  14          
+  15          bit feature_heat;
+  16          bit feature_dry;
+  17          bit feature_double;
+  18          
+  19          void washer_off_all() {
+  20   1        motor_fast = OFF;
+  21   1        motor_slow = OFF;
+  22   1        motor_reverse = OFF;
+  23   1        water_drain = OFF;
+  24   1        
+  25   1        door_lock = OFF;
+  26   1        heater = OFF;
+  27   1        water_valve = OFF;
+  28   1        detergent_valve = OFF;
+  29   1      
+  30   1        error = OFF;
+  31   1      }
+  32          
+  33          void washer_program_features(tByte program_number, tByte *features)
+  34          {  
+  35   1        if(program_number == 6
+  36   1        || program_number == 14
+  37   1        || program_number == 18) { // -- COLD WET -- //
+  38   2          features[0] = FALSE;    // heat
+  39   2          features[1] = FALSE;  // dry
+  40   2          features[2] = FALSE;  // double
+  41   2       
+  42   2        }  else if(program_number == 5
+  43   1        || program_number == 13
+  44   1        || program_number == 17) { // -- WET -- //
+  45   2          features[0] = TRUE;   // heat
+  46   2          features[1] = FALSE;   // dry
+  47   2          features[2] = FALSE;  // double
+  48   2        } else if(program_number == 1
+  49   1        || program_number == 4
+  50   1        || program_number == 12
+  51   1        || program_number == 16) { // -- COLD -- //
+C51 COMPILER V9.60.0.0   WASHER                                                            01/18/2023 10:53:04 PAGE 2   
+
+  52   2          features[0] = FALSE;    // heat
+  53   2          features[1] = TRUE;   // dry
+  54   2          features[2] = FALSE;  // double
+  55   2      
+  56   2        } else if(program_number == 3
+  57   1        || program_number == 11
+  58   1        || program_number == 15) { // -- NORMAL -- //
+  59   2          features[0] = TRUE;   // heat
+  60   2          features[1] = TRUE;   // dry
+  61   2          features[2] = FALSE;  // double
+  62   2      
+  63   2        } else if(program_number == 10) { // -- HEAVY COLD WET -- //
+  64   2          features[0] = FALSE;    // heat
+  65   2          features[1] = FALSE;  // dry
+  66   2          features[2] = TRUE;   // double
+  67   2       
+  68   2        }  else if(program_number == 9) { // -- HEAVY WET -- //
+  69   2          features[0] = TRUE;   // heat
+  70   2          features[1] = FALSE;  // dry
+  71   2          features[2] = TRUE;   // double
+  72   2      
+  73   2        } else if(program_number == 2
+  74   1        || program_number == 8) { // -- HEAVY COLD -- //
+  75   2          features[0] = FALSE;    // heat
+  76   2          features[1] = TRUE;   // dry
+  77   2          features[2] = TRUE;   // double
+  78   2      
+  79   2        } else if(program_number == 7) { // -- HEAVY -- //
+  80   2          features[0] = TRUE;   // heat
+  81   2          features[1] = TRUE;   // dry
+  82   2          features[2] = TRUE;   // double
+  83   2      
+  84   2        }
+  85   1      }
+  86          tByte washer_get_program_step(tByte program_number, int step_number) {
+  87   1        if(program_number == 1
+  88   1        || program_number == 2) {
+  89   2          return program_dry[step_number];
+  90   2       
+  91   2        } else if(program_number == 3
+  92   1        || program_number == 4
+  93   1        || program_number == 5
+  94   1        || program_number == 6
+  95   1        || program_number == 7
+  96   1        || program_number == 8
+  97   1        || program_number == 9
+  98   1        || program_number == 10) {
+  99   2          return program_wash[step_number];
+ 100   2       
+ 101   2        } else if(program_number == 11
+ 102   1        || program_number == 12
+ 103   1        || program_number == 13
+ 104   1        || program_number == 14) {
+ 105   2          return program_light_wash[step_number];
+ 106   2      
+ 107   2        } else if(program_number == 15
+ 108   1        || program_number == 16
+ 109   1        || program_number == 17
+ 110   1        || program_number == 18) {
+ 111   2          return program_very_light_wash[step_number];
+ 112   2      
+ 113   2        }
+C51 COMPILER V9.60.0.0   WASHER                                                            01/18/2023 10:53:04 PAGE 3   
+
+ 114   1      }
+ 115          
+ 116          
+ 117          
+ 118          /*------------------------------------------------------------*-
+ 119          ---- END OF FILE --------------------------------------------
+ 120          -*------------------------------------------------------------*/
+*** WARNING C291 IN LINE 114 OF C:\Users\Admin\Downloads\Compressed\washing-machine-8051-master\Washer.c: not every exit
+             - path returns a value
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    366    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     28    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      3    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

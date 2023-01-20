@@ -1,0 +1,274 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              01/18/2023 10:53:41 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\Main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE C:\Users\Admin\Downloads\Compressed\washing-machine-8051-master\Main.c O
+                    -PTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Main.lst) TABS(2) OBJECT(.\Objects\Main.obj)
+
+line level    source
+
+   1          #include "Main.h"
+   2          #include "Seven_segment.h"
+   3          #include "Port.h"
+   4          #include "Switch.h"
+   5          #include "Delay.h"
+   6          #include "SOES.h"
+   7          #include "Washer.h"
+   8          
+   9          #define ONE_SEC 2
+  10          tByte program_number[seg7_number] = {0};
+  11          int time_ticks = 0;
+  12          int time_ticks_internal = 0;
+  13          tByte program_selected = 0;
+  14          int program_step = 0;
+  15          int program_state = 0;
+  16          int curret_state = INIT;
+  17            
+  18          tByte features[3] = {FALSE};
+  19          
+  20          void program_inc(tByte *displayed_array, bit is_dec);
+  21          
+  22          
+  23          void main()
+  24          {
+  25   1        seg7_enable(1,IS_ANODE,1);
+  26   1        finished = OFF;
+  27   1        SOES_voidInitialize ();
+  28   1        SOES_voidGoToSleep();
+  29   1        
+  30   1      }
+  31          
+  32          void program_inc(tByte *displayed_array, bit is_dec)
+  33          {
+  34   1        if(is_dec)
+  35   1        {
+  36   2          if(displayed_array[0] > 0)
+  37   2          {
+  38   3            displayed_array[0]--;
+  39   3          }else if(displayed_array[1] >0)
+  40   2          {
+  41   3            displayed_array[0] = 9;
+  42   3            displayed_array[1]--; 
+  43   3          }
+  44   2        } else {
+  45   2          if(displayed_array[0] < 9 && displayed_array[1] == 0 || displayed_array[0] < 8 && displayed_array[1] ==
+             - 1)
+  46   2          {
+  47   3            displayed_array[0]++;
+  48   3          }else if(displayed_array[1] == 0)
+  49   2          {
+  50   3            displayed_array[0] = 0;
+  51   3            displayed_array[1] = 1; 
+  52   3          }
+  53   2        }
+C51 COMPILER V9.60.0.0   MAIN                                                              01/18/2023 10:53:41 PAGE 2   
+
+  54   1      }
+  55          
+  56          void run()
+  57          {
+  58   1        seg7_display_digits(program_number,IS_ANODE);
+  59   1        switch (curret_state)
+  60   1        {
+  61   2          case INIT:
+  62   2          {
+  63   3            washer_off_all();
+  64   3            program_step=0;
+  65   3            time_ticks = 0;
+  66   3            time_ticks_internal = 0;
+  67   3            program_selected = 0;   
+  68   3      
+  69   3            curret_state = PROGRAM_SELECT;
+  70   3            break;
+  71   3          }
+  72   2          case PROGRAM_SELECT:
+  73   2          {
+  74   3              // switch Up is pressed
+  75   3            if(SWITCH_state(1, DEBOUNCE_PERIOD) == SWITCH_PRESSED)
+  76   3            {
+  77   4              program_inc(program_number, 0); 
+  78   4            } 
+  79   3            // switch Down is pressed
+  80   3            if(SWITCH_state(2, DEBOUNCE_PERIOD) == SWITCH_PRESSED)
+  81   3            {
+  82   4              program_inc(program_number, 1); 
+  83   4            }
+  84   3            // switch Start is pressed
+  85   3            if(SWITCH_state(3, DEBOUNCE_PERIOD) == SWITCH_PRESSED)
+  86   3            {
+  87   4              if(door_closed_pin ==  SWITCH_PRESSED)
+  88   4              {
+  89   5                program_selected = array_to_value(program_number, seg7_number);
+  90   5                if(program_selected != 0)
+  91   5                {
+  92   6                  door_lock = ON;
+  93   6                  curret_state = RUN_PROGRAM;
+  94   6                  washer_program_features(program_selected, features); 
+  95   6                }
+  96   5              } 
+  97   4            }
+  98   3            break;
+  99   3          }
+ 100   2          case RUN_PROGRAM:
+ 101   2          {
+ 102   3            if(door_closed_pin != SWITCH_PRESSED ||  SWITCH_state(3, DEBOUNCE_PERIOD) != SWITCH_PRESSED)
+ 103   3            {
+ 104   4              washer_off_all();
+ 105   4              error = ON;
+ 106   4              break;  
+ 107   4            } else {
+ 108   4               error = OFF;
+ 109   4               finished = OFF;
+ 110   4               door_lock = ON;
+ 111   4            }
+ 112   3      
+ 113   3            program_state = washer_get_program_step(program_selected, program_step);
+ 114   3            switch (program_state)
+ 115   3            {
+C51 COMPILER V9.60.0.0   MAIN                                                              01/18/2023 10:53:41 PAGE 3   
+
+ 116   4              case FINISH:
+ 117   4              {
+ 118   5                washer_off_all();
+ 119   5                finished = ON;
+ 120   5                program_number[0] = 0;
+ 121   5                program_number[1] = 0;
+ 122   5                curret_state = INIT;
+ 123   5                break;
+ 124   5              }
+ 125   4              case ADD_DETERGENT:
+ 126   4              {
+ 127   5                detergent_valve = ON;
+ 128   5                if (++time_ticks >= (5*ONE_SEC)){
+ 129   6                  detergent_valve = OFF;
+ 130   6                  time_ticks = 0;
+ 131   6                  program_step++;
+ 132   6                }
+ 133   5                break;
+ 134   5              }
+ 135   4              case ADD_WATER:
+ 136   4              {
+ 137   5                water_valve = ON;
+ 138   5                if (water_level_full == SENSOR_ON){
+ 139   6                  water_valve = OFF;
+ 140   6                  program_step++;
+ 141   6                }
+ 142   5                break;
+ 143   5              }
+ 144   4              case HEAT:
+ 145   4              {
+ 146   5                if(features[0] == FALSE)
+ 147   5                {
+ 148   6                  program_step++;
+ 149   6                  break;  
+ 150   6                }
+ 151   5                heater = ON;
+ 152   5                if (temprature_sensor == SENSOR_ON){
+ 153   6                  heater = OFF;
+ 154   6                  program_step++;
+ 155   6                }
+ 156   5                break;
+ 157   5              }
+ 158   4              case SPIN_MOTOR:
+ 159   4              {
+ 160   5                motor_slow = ON;
+ 161   5                if (++time_ticks >= (5*ONE_SEC)){
+ 162   6                  motor_slow = OFF;
+ 163   6                  time_ticks = 0;
+ 164   6                  program_step++;
+ 165   6                }
+ 166   5                break;
+ 167   5              }
+ 168   4              case TOGGLE_MOTOR:
+ 169   4              {
+ 170   5                if(time_ticks_internal < (2*ONE_SEC)) {
+ 171   6                  // spin forward
+ 172   6                  motor_reverse = OFF;
+ 173   6                  DELAY_loop_ms(10);
+ 174   6                  motor_slow = ON;
+ 175   6      
+ 176   6                  time_ticks_internal++;
+ 177   6                } else if(time_ticks_internal < (4*ONE_SEC)) {
+C51 COMPILER V9.60.0.0   MAIN                                                              01/18/2023 10:53:41 PAGE 4   
+
+ 178   6                  // spin backwards
+ 179   6                  motor_slow = OFF;
+ 180   6                  DELAY_loop_ms(10);
+ 181   6                  motor_reverse = ON;
+ 182   6      
+ 183   6                  time_ticks_internal++;
+ 184   6                } else {
+ 185   6                  time_ticks_internal = 0;
+ 186   6                  motor_reverse = OFF;
+ 187   6                  motor_slow = ON;
+ 188   6                }
+ 189   5      
+ 190   5                if (++time_ticks >= (8*ONE_SEC)){
+ 191   6                  motor_reverse = OFF;
+ 192   6                  motor_slow = OFF;
+ 193   6                  time_ticks = 0;
+ 194   6                  program_step++;
+ 195   6                }
+ 196   5                break;
+ 197   5              }
+ 198   4              case DRY:
+ 199   4              {
+ 200   5                if(features[1] == FALSE)
+ 201   5                {
+ 202   6                  program_step++;
+ 203   6                  break;  
+ 204   6                }
+ 205   5                if (time_ticks_internal < (5*ONE_SEC)){
+ 206   6                  motor_fast = ON;
+ 207   6                  time_ticks_internal++;
+ 208   6                  break;
+ 209   6                } else {
+ 210   6                  motor_fast = OFF;
+ 211   6                }
+ 212   5                // yes there is no break here 3:)
+ 213   5                // so that the program start draining right after finishing
+ 214   5              }
+ 215   4              case DRAIN_WATER:
+ 216   4              {
+ 217   5                water_drain = ON;
+ 218   5                if (water_level_empty == SENSOR_ON){
+ 219   6                  water_drain = OFF;
+ 220   6                  time_ticks_internal=0;
+ 221   6                  program_step++;
+ 222   6                }
+ 223   5                break;
+ 224   5              } 
+ 225   4              case REPEAT:
+ 226   4              {
+ 227   5                // if feature_double == false, we finished repeating
+ 228   5                if(features[2] == FALSE)
+ 229   5                { 
+ 230   6                    program_step++;
+ 231   6                } else {
+ 232   6                    features[2] = FALSE;  
+ 233   6                    program_step=0;
+ 234   6                }
+ 235   5                break;  
+ 236   5              } 
+ 237   4            }
+ 238   3            break;
+ 239   3          }
+C51 COMPILER V9.60.0.0   MAIN                                                              01/18/2023 10:53:41 PAGE 5   
+
+ 240   2        }
+ 241   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    728    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     16    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

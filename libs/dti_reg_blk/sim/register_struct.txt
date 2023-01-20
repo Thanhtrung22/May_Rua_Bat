@@ -1,0 +1,16 @@
+data_tem {
+  name              : data_tem
+  addr              : 000
+  start_bit         : 0
+  bit_numb          : 2
+  default_value     : 0
+  set_value         : 0
+}
+ctrl_warm_en {
+  name              : ctrl_warm_en
+  addr              : 004
+  start_bit         : 0
+  bit_numb          : 1
+  default_value     : 0
+  set_value         : 0
+}

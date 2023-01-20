@@ -1,0 +1,22 @@
+/data5/workspace/lampn0/lampn_edabk/embedded_system/sim/src/tb_controller.v {1 {vlog -work work -vopt -stats=none /data5/workspace/lampn0/lampn_edabk/embedded_system/sim/src/tb_controller.v
+QuestaSim-64 vlog 10.7d_1 Compiler 2019.05 May  8 2019
+-- Compiling module tb_controller
+
+Top level modules:
+	tb_controller
+
+} {} {}} /data5/workspace/lampn0/lampn_edabk/embedded_system/hdl/clock_generator.v {1 {vlog -work work -vopt -stats=none /data5/workspace/lampn0/lampn_edabk/embedded_system/hdl/clock_generator.v
+QuestaSim-64 vlog 10.7d_1 Compiler 2019.05 May  8 2019
+-- Compiling module clock_generator
+
+Top level modules:
+	clock_generator
+
+} {} {}} /data5/workspace/lampn0/lampn_edabk/embedded_system/hdl/controller.v {1 {vlog -work work -vopt -stats=none /data5/workspace/lampn0/lampn_edabk/embedded_system/hdl/controller.v
+QuestaSim-64 vlog 10.7d_1 Compiler 2019.05 May  8 2019
+-- Compiling module controller
+
+Top level modules:
+	controller
+
+} {} {}}

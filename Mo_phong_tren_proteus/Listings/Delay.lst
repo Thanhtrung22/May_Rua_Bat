@@ -1,0 +1,92 @@
+C51 COMPILER V9.60.0.0   DELAY                                                             01/18/2023 10:53:03 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DELAY
+OBJECT MODULE PLACED IN .\Objects\Delay.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE C:\Users\Admin\Downloads\Compressed\washing-machine-8051-master\Delay.c 
+                    -OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Delay.lst) TABS(2) OBJECT(.\Objects\Delay.obj)
+
+line level    source
+
+   1          /*------------------------------------------------------------*-
+   2          Delay.C (v1.00)
+   3          -------------------------------------------------------------
+   4          Create a simple software delay using a loop.
+   5          -*------------------------------------------------------------*/
+   6          #include "Main.h"
+   7          #include "Port.h"
+   8          #include "Delay.h"
+   9          
+  10          void DELAY_T0_ms(tWord N)
+  11          {
+  12   1        tWord ms;
+  13   1        // Configure Timer 0 as a 16-bit timer
+  14   1        TMOD &= 0xF0; // Clear all T0 bits (T1 left unchanged)
+  15   1        TMOD |= 0x01; // Set required T0 bits (T1 left unchanged)
+  16   1        ET0 = 0; // No interupts
+  17   1      
+  18   1        // Delay value is *approximately* 1 ms per loop
+  19   1        for (ms = 0; ms < N; ms++)  
+  20   1        {
+  21   2          TH0 = PRELOAD01H;
+  22   2          TL0 = PRELOAD01L;
+  23   2          TF0 = 0; // clear overflow flag
+  24   2          TR0 = 1; // start timer 0
+  25   2          while (TF0 == 0); // Loop until Timer 0 overflows (TF0 == 1)
+  26   2          TR0 = 0; // Stop Timer 0
+  27   2        }
+  28   1      }
+  29          
+  30          void DELAY_T1_ms(tWord N)
+  31          {
+  32   1        tWord ms;
+  33   1        // Configure Timer 0 as a 16-bit timer
+  34   1        TMOD &= 0x0F; // Clear all T0 bits (T1 left unchanged)
+  35   1        TMOD |= 0x10; // Set required T0 bits (T1 left unchanged)
+  36   1        ET1 = 0; // No interupts
+  37   1      
+  38   1        // Delay value is *approximately* 1 ms per loop
+  39   1        for (ms = 0; ms < N; ms++)  
+  40   1        {
+  41   2          TH1 = PRELOAD01H;
+  42   2          TL1 = PRELOAD01L;
+  43   2          TF1 = 0; // clear overflow flag
+  44   2          TR1 = 1; // start timer 0
+  45   2          while (TF1 == 0); // Loop until Timer 0 overflows (TF0 == 1)
+  46   2          TR1 = 0; // Stop Timer 0
+  47   2        }
+  48   1      }
+  49          
+  50          void DELAY_loop_ms(tWord ms)
+  51          {
+  52   1       tWord counter1;
+  53   1       tByte counter2;
+  54   1       for(counter1=0;counter1<ms;counter1++)
+C51 COMPILER V9.60.0.0   DELAY                                                             01/18/2023 10:53:03 PAGE 2   
+
+  55   1       for( counter2 =0;counter2<250;counter2++);
+  56   1      }
+  57          
+  58          void DELAY_loop_ns(tWord ns)
+  59          {
+  60   1       int counter;
+  61   1       for(counter=0;counter<ns;counter++);
+  62   1      }
+  63          
+  64          /*------------------------------------------------------------*-
+  65          ---- END OF FILE --------------------------------------------
+  66          -*------------------------------------------------------------*/
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    133    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

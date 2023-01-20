@@ -1,0 +1,77 @@
+{
+   ExpandedHierarchyInLayout: "",
+   guistr: "# # String gsaved with Nlview 6.8.5  2018-01-30 bk=1.4354 VDI=40 GEI=35 GUI=JA:1.6 TLS
+#  -string -flagsOSRD
+preplace port button_reset -pg 1 -y 710 -defaultsOSRD
+preplace port dis_de -pg 1 -y 230 -defaultsOSRD
+preplace port oled_vdd -pg 1 -y 490 -defaultsOSRD
+preplace port DDR -pg 1 -y 370 -defaultsOSRD
+preplace port led_using -pg 1 -y 170 -defaultsOSRD
+preplace port warm_up_on -pg 1 -y 130 -defaultsOSRD
+preplace port ctrl_toilet_using -pg 1 -y 200 -defaultsOSRD
+preplace port ctrl_de_ur -pg 1 -y 240 -defaultsOSRD
+preplace port oled_reset_n -pg 1 -y 530 -defaultsOSRD
+preplace port ctrl_spray_mode -pg 1 -y 300 -defaultsOSRD
+preplace port ctrl_auto_dis_en -pg 1 -y 220 -defaultsOSRD
+preplace port user_flushes -pg 1 -y 210 -defaultsOSRD
+preplace port ctrl_sp_dr_auto_en -pg 1 -y 260 -defaultsOSRD
+preplace port ctrl_spray_en -pg 1 -y 280 -defaultsOSRD
+preplace port oled_vbat -pg 1 -y 510 -defaultsOSRD
+preplace port open_toilet_lid -pg 1 -y 150 -defaultsOSRD
+preplace port oled_dc_n -pg 1 -y 550 -defaultsOSRD
+preplace port oled_spi_data -pg 1 -y 470 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -y 390 -defaultsOSRD
+preplace port spray_an -pg 1 -y 190 -defaultsOSRD
+preplace port data -pg 1 -y 660 -defaultsOSRD
+preplace port ctrl_user_en -pg 1 -y 180 -defaultsOSRD
+preplace port oled_spi_clk -pg 1 -y 450 -defaultsOSRD
+preplace portBus data_tem -pg 1 -y 160 -defaultsOSRD
+preplace inst dht11_controller_v1_0 -pg 1 -lvl 4 -y 670 -defaultsOSRD
+preplace inst system_controller_0 -pg 1 -lvl 4 -y 180 -defaultsOSRD
+preplace inst axi_apb_bridge_0 -pg 1 -lvl 3 -y 750 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -y 650 -defaultsOSRD
+preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -y 710 -defaultsOSRD
+preplace inst oled_controller_0 -pg 1 -lvl 4 -y 500 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -y 460 -defaultsOSRD
+preplace netloc processing_system7_0_DDR 1 1 4 NJ 370 NJ 370 NJ 370 NJ
+preplace netloc ps7_0_axi_periph_M02_AXI 1 2 1 780
+preplace netloc axi_apb_bridge_0_APB_M 1 3 1 1040
+preplace netloc aux_reset_in_0_1 1 0 1 NJ
+preplace netloc system_controller_0_spray_an 1 4 1 NJ
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 480
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 3 480 820 790 640 1060
+preplace netloc oled_controller_0_oled_dc_n 1 4 1 NJ
+preplace netloc oled_controller_0_oled_vdd 1 4 1 NJ
+preplace netloc oled_controller_0_oled_spi_clk 1 4 1 NJ
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 2 20 810 450
+preplace netloc ctrl_toilet_using_0_1 1 0 4 NJ 200 NJ 200 NJ 200 NJ
+preplace netloc ps7_0_axi_periph_M01_AXI 1 2 2 N 650 NJ
+preplace netloc ctrl_spray_mode_0_1 1 0 4 NJ 300 NJ 300 NJ 300 NJ
+preplace netloc processing_system7_0_FIXED_IO 1 1 4 NJ 390 NJ 390 NJ 390 NJ
+preplace netloc system_controller_0_warm_up_on 1 4 1 NJ
+preplace netloc oled_controller_0_oled_reset_n 1 4 1 NJ
+preplace netloc system_controller_0_led_using 1 4 1 NJ
+preplace netloc ctrl_sp_dr_auto_en_0_1 1 0 4 NJ 260 NJ 260 NJ 260 NJ
+preplace netloc ctrl_de_ur_0_1 1 0 4 NJ 240 NJ 240 NJ 240 NJ
+preplace netloc Net 1 4 1 NJ
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 4 20 610 470 810 800 670 1070
+preplace netloc ctrl_spray_en_0_1 1 0 4 NJ 280 NJ 280 NJ 280 NJ
+preplace netloc oled_controller_0_oled_vbat 1 4 1 NJ
+preplace netloc ps7_0_axi_periph_M00_AXI 1 2 2 790 480 NJ
+preplace netloc system_controller_0_dis_de 1 4 1 NJ
+preplace netloc system_controller_0_user_flushes 1 4 1 NJ
+preplace netloc system_controller_0_open_toilet_lid 1 4 1 NJ
+preplace netloc ctrl_auto_dis_en_0_1 1 0 4 NJ 220 NJ 220 NJ 220 NJ
+preplace netloc ctrl_user_en_0_1 1 0 4 NJ 180 NJ 180 NJ 180 NJ
+preplace netloc processing_system7_0_FCLK_CLK1 1 1 3 450J 150 NJ 150 1050
+preplace netloc data_tem_0_1 1 0 4 NJ 160 NJ 160 NJ 160 NJ
+preplace netloc oled_controller_0_oled_spi_data 1 4 1 NJ
+preplace netloc rst_ps7_0_100M_interconnect_aresetn 1 1 1 460
+levelinfo -pg 1 0 240 630 920 1220 1390 -top 0 -bot 830
+",
+}
+{
+   da_axi4_cnt: "3",
+   da_clkrst_cnt: "1",
+   da_ps7_cnt: "1",
+}

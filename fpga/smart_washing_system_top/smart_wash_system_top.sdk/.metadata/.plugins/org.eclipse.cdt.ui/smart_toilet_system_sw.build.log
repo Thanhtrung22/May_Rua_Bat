@@ -1,0 +1,8 @@
+17:53:10 **** Incremental Build of configuration Debug for project smart_toilet_system_sw ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+
+17:53:10 Build Finished (took 793ms)
+

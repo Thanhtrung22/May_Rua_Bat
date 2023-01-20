@@ -1,0 +1,4 @@
+Block Name,Block Description,Block Component Name,Block Instance Name,Block Instance Type,Block Instance Description,Block Instance Dimension,Block Instance Backdoor,Block Instance Parameter Name,Block Instance Parameter Value,Block Instance Parameter Description
+regs,Data Register,data,reg_data,register,Data Register,,%(FIELDS),,,
+regs,Control Register,ctrl,reg_ctrl,register,Control Register,,%(FIELDS),,,
+regs,Status Register,stt,reg_stt,register,Status Register,,%(FIELDS),,,

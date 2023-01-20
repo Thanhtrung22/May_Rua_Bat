@@ -1,0 +1,117 @@
+C51 COMPILER V9.60.0.0   SEVEN_SEGMENT                                                     01/18/2023 10:53:03 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SEVEN_SEGMENT
+OBJECT MODULE PLACED IN .\Objects\Seven_segment.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE C:\Users\Admin\Downloads\Compressed\washing-machine-8051-master\Seven_se
+                    -gment.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Seven_segment.lst) TABS(2) OBJECT(.\Objects\Seven_s
+                    -egment.obj)
+
+line level    source
+
+   1          /*------------------------------------------------------------*-
+   2          seven_segment.C (v1.00)
+   3          -------------------------------------------------------------
+   4          Simple library for displaying digits on 7 segment.
+   5          
+   6          -*------------------------------------------------------------*/
+   7          #include "Main.h"
+   8          #include "Port.h"
+   9          #include "Seven_segment.h"
+  10          #include "Delay.h"
+  11          
+  12          // Values to be sent to the port depending on the selected index(DIGIT)
+  13          static const tByte bcd_to_7_anode[] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};
+  14          static const tByte bcd_to_7_cathode[] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+  15          
+  16          // Display digits on the 7 segment
+  17          void seg7_display_1_digit(tByte digit, bit is_anode)
+  18          {   
+  19   1        if(is_anode == 1)
+  20   1        {
+  21   2          port_7_segment = bcd_to_7_anode[digit];
+  22   2        } else {
+  23   2          port_7_segment = bcd_to_7_cathode[digit];
+  24   2        }
+  25   1        DELAY_loop_ns(2);
+  26   1      }
+  27          void seg7_enable(int segment_number, bit is_anode, bit disable_rest)
+  28          {
+  29   1        if(segment_number == 1)
+  30   1        {
+  31   2          if(is_anode)
+  32   2          {
+  33   3              seg7_enable_1 = 1;
+  34   3            if(disable_rest)
+  35   3            {
+  36   4               seg7_enable_2 = 0;
+  37   4               
+  38   4            }
+  39   3          } else {
+  40   3            seg7_enable_1 = 0;
+  41   3            if(disable_rest)
+  42   3            {
+  43   4               seg7_enable_2 = 1;
+  44   4            }
+  45   3          } 
+  46   2        } else if(segment_number == 2)
+  47   1        {
+  48   2          if(is_anode)
+  49   2          {
+  50   3              seg7_enable_2 = 1;
+  51   3            if(disable_rest)
+  52   3            {
+  53   4               seg7_enable_1 = 0;
+C51 COMPILER V9.60.0.0   SEVEN_SEGMENT                                                     01/18/2023 10:53:03 PAGE 2   
+
+  54   4            }
+  55   3          } else {
+  56   3            seg7_enable_2 = 0;
+  57   3            if(disable_rest)
+  58   3            {
+  59   4               seg7_enable_1 = 1;
+  60   4            }
+  61   3          } 
+  62   2        }
+  63   1      }
+  64          void seg7_display_digits(tByte digits[seg7_number], bit is_anode)
+  65          {
+  66   1        int i;
+  67   1        for(i=0; i<seg7_number; i++)
+  68   1          {
+  69   2            seg7_enable(i+1, is_anode, 1);
+  70   2          seg7_display_1_digit(digits[i], is_anode);
+  71   2          DELAY_loop_ms(50);  
+  72   2          }
+  73   1      }
+  74          
+  75          int array_to_value(tByte *container_array, int array_size)
+  76          {
+  77   1        tByte result=0;
+  78   1        int i, j,  multiplier=1;
+  79   1        for(i=0; i<array_size; i++)
+  80   1        {
+  81   2          for(j=0; j<i;j++)
+  82   2          {
+  83   3            multiplier *= 10;
+  84   3          }
+  85   2          result += container_array[i] *  multiplier;
+  86   2          multiplier = 1; 
+  87   2        }
+  88   1        return result;
+  89   1      }
+  90          //------------------- END OF FILE --------------------------------
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    275    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     20      15
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       4
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

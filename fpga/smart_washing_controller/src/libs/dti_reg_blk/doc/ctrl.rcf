@@ -1,0 +1,21 @@
+# ----- Import
+js, $(RA_EXAMPLES)/csv.js, regs, rtl_settings.csv, maps.csv, blocks.csv, mems.csv, regs.csv
+
+# ----- Checks
+java, addDefaultChecks
+js, $(RA_EXAMPLES)/checks.js
+tcl, $(RA_EXAMPLES)/checkMap.tcl
+
+# Run Checks
+java, check, dontStop
+
+
+# ----- Auto-Instancing
+
+
+# ----- Generators
+java, uvm, regs_pkg.sv, 1.1, false, ../sim/regassistant
+java, rtl, ../hdl
+java, c_header, register_block.h, ../sim/regassistant
+
+js, $(RA_EXAMPLES)/html.js, ../sim/regassistant

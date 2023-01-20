@@ -1,0 +1,300 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/data5/workspace/lampn0/lampn_edabk/embedded_system/sim/work
+T_opt
+!s110 1655526230
+VQNFz>?V3Z^YIg6=YbQ00a2
+Z1 04 13 4 work tb_controller fast 0
+=1-f4e9d4963d82-62ad5356-f56e-7099
+o-quiet -auto_acc_if_foreign -work work
+Z2 tCvgOpt 0
+n@_opt
+Z3 OL;O;10.7d_1;67
+R0
+T_opt1
+!s110 1655527528
+VP6gT9GolDF];IfOF9b_DX2
+R1
+=10-f4e9d4963d82-62ad5868-4435e-7618
+Z4 o-quiet -auto_acc_if_foreign -work work +acc
+R2
+n@_opt1
+R3
+R0
+T_opt2
+!s110 1655950586
+VI9M1[<[[mbMQ_EEEMPiZS0
+04 7 4 work tb_core fast 0
+=2-f4e9d4963d82-62b3ccf9-d64b0-b74c
+R4
+R2
+n@_opt2
+R3
+vclock_generator
+Z5 !s110 1655950580
+!i10b 1
+!s100 8FWahiPM6BH[QmQA1a7l51
+Iha;gK`TbN?m9Q_QLCG80=2
+Z6 VDg1SIo80bB@j0V0VzS_@n1
+Z7 d/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/sim/work
+w1655950453
+8/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/clock_generator.v
+F/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/clock_generator.v
+Z8 L0 12
+Z9 OL;L;10.7d_1;67
+r1
+!s85 0
+31
+Z10 !s108 1655950580.000000
+!s107 /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/clock_generator.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/clock_generator.v|
+!i113 0
+Z11 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vcontroller
+R5
+!i10b 1
+!s100 58z;cz;enNP9HB]E:[Ye70
+IFzJP3QPS`hjkSkQd3:IlP1
+R6
+R7
+w1655950441
+8/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/controller.v
+F/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/controller.v
+R8
+R9
+r1
+!s85 0
+31
+R10
+!s107 /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/controller.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/controller.v|
+!i113 0
+R11
+R2
+vcore
+Z12 !s110 1655950581
+!i10b 1
+!s100 hK4ZXCR:PEo1^f4lGg9fX3
+ISD_1ETTXnMe>89JoaDLXQ1
+R6
+R7
+w1655949765
+8/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/core.v
+F/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/core.v
+R8
+R9
+r1
+!s85 0
+31
+R10
+!s107 /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/core.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/core.v|
+!i113 0
+R11
+R2
+vcounter
+R12
+!i10b 1
+!s100 H0c^J;bRV5JiQU4>HdcG;0
+Iz3T7Rn[c1ACAdeIO3L[2e1
+R6
+R7
+w1655946323
+8/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/counter.v
+F/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/counter.v
+R8
+R9
+r1
+!s85 0
+31
+Z13 !s108 1655950581.000000
+!s107 /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/counter.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/counter.v|
+!i113 0
+R11
+R2
+vrb_apb_bridge
+Z14 DXx6 sv_std 3 std 0 22 d=_JfHTnXCN[H5FjiaJJc0
+R12
+!i10b 1
+!s100 KP>nlQ?ckzCYa=5jTCXCR0
+IQg?<C4F[KOKaXg[c:kYbn2
+R6
+!s105 rb_apb_bridge_sv_unit
+S1
+R7
+w1655943532
+8/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/rb_apb_bridge.sv
+F/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/rb_apb_bridge.sv
+L0 1
+R9
+r1
+!s85 0
+31
+R13
+!s107 /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/rb_apb_bridge.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/rb_apb_bridge.sv|
+!i113 0
+Z15 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vrb_regs
+R14
+!s110 1655806128
+!i10b 1
+!s100 mgG=mjk2IU>=LMLTJ>Vi82
+IABC;cR`b<>OzcNDO90j4S0
+R6
+!s105 rb_regs_sv_unit
+S1
+R7
+w1655803417
+8/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/rb_regs.sv
+F/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/rb_regs.sv
+L0 1
+R9
+r1
+!s85 0
+31
+!s108 1655806128.000000
+!s107 /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/rb_regs.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/rb_regs.sv|
+!i113 0
+R15
+R2
+vregister_block
+R14
+R12
+!i10b 1
+!s100 nFHTST1I_gIWkgBXZ1l_E2
+IeEgh^1Z?l5=AJ9DAfKSHf2
+R6
+!s105 register_block_sv_unit
+S1
+R7
+w1655944133
+8/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/register_block.sv
+F/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/register_block.sv
+L0 1
+R9
+r1
+!s85 0
+31
+R13
+!s107 /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/register_block.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/register_block.sv|
+!i113 0
+R15
+R2
+vregs
+R12
+!i10b 1
+!s100 JfzD@JUd;>NYn@ZP6eD>S0
+ID]kzRh[XZ4cmz71jMVP9Z0
+R6
+R7
+w1655943984
+8/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/regs.v
+F/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/regs.v
+L0 73
+R9
+r1
+!s85 0
+31
+R13
+!s107 /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/regs.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/libs/dti_reg_blk/hdl/regs.v|
+!i113 0
+R11
+R2
+vsmart_toilet_system_top
+R12
+!i10b 1
+!s100 ;n50F?oQdOZ0aH<ZOW?j;0
+IY:627U6_6RJC[:[F<Rgi>0
+R6
+R7
+w1655949878
+8/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/smart_toilet_system_top.v
+F/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/smart_toilet_system_top.v
+R8
+R9
+r1
+!s85 0
+31
+R13
+!s107 /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/smart_toilet_system_top.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/smart_toilet_system_top.v|
+!i113 0
+R11
+R2
+vtb_controller
+!s110 1655527525
+!i10b 1
+!s100 >LkE``PMOmj_ga6EzGE=a1
+I@oEG@eb^_NQ6z5?Z`Pl^A0
+R6
+R0
+w1655527404
+8/data5/workspace/lampn0/lampn_edabk/embedded_system/sim/src/tb_controller.v
+F/data5/workspace/lampn0/lampn_edabk/embedded_system/sim/src/tb_controller.v
+L0 2
+R9
+r1
+!s85 0
+31
+!s108 1655527525.000000
+!s107 /data5/workspace/lampn0/lampn_edabk/embedded_system/sim/src/tb_controller.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/data5/workspace/lampn0/lampn_edabk/embedded_system/sim/src/tb_controller.v|
+!i113 0
+R11
+R2
+vtb_core
+R5
+!i10b 1
+!s100 Ba_AdL>@jb?gRK;0N9hAZ0
+I?Uz=P6K9i52=<@PH3_9WS0
+R6
+R7
+w1655949936
+8/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/sim/src/tb_core.v
+F/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/sim/src/tb_core.v
+L0 2
+R9
+r1
+!s85 0
+31
+R10
+!s107 /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/sim/src/tb_core.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/sim/src/tb_core.v|
+!i113 0
+R11
+R2
+vwarm_up
+R12
+!i10b 1
+!s100 @X7Y_dZKGFIdVnA5T93DO0
+I4D@Zk8CjG^XNg1IPaB9BS0
+R6
+R7
+w1655943531
+8/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/warm_up.v
+F/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/warm_up.v
+R8
+R9
+r1
+!s85 0
+31
+R13
+!s107 /data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/warm_up.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|/data5/workspace/lampn0/lampn_edabk/embedded_system_20212/hdl/warm_up.v|
+!i113 0
+R11
+R2

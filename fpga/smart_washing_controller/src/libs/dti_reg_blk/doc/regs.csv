@@ -1,0 +1,13 @@
+Register Name,Register Description,Register Address,Register Width,Field Name,Field Description,Field Offset,Field Width,Field Reset Value,Field Access,Field Hw Access,Field Condition,Field Action,Field Logic Comment,Field is Covered,Field Backdoor,Field is Reserved,Field is Volatile,Field Constraints,Field Parameter Name,Field Parameter Value,Field Parameter Description
+data,Data Register,0x0,32,tem,Temperature Data,0,2,0,RO,WO,,,,TRUE,data_tem,,,,,,
+data,0,0x0,32,rfu,Reserved for Future Use,2,30,0,,,,,,,,TRUE,,,,,
+ctrl,Control Register,0x4,32,warm_en,"Warm up enable
+0: Disable
+1: Enable",0,1,0,RW,RO,,,,TRUE,ctrl_warm_en,,,,,,
+ctrl,0,0x4,32,rfu,Reserved for Future Use,1,31,0,,,,,,,,TRUE,,,,,
+stt,Status Register,0x8,32,ready,Ready for using,0,1,0,RO,WO,,,,TRUE,stt_ready,,,,,,
+stt,0,0x8,32,using,Status Using,1,1,0,RO,WO,,,,TRUE,stt_using,,,,,,
+stt,0,0x8,32,spraying,Status Spraying,2,1,0,RO,WO,,,,TRUE,stt_spraying,,,,,,
+stt,0,0x8,32,drying,Status Drying,3,1,0,RO,WO,,,,TRUE,stt_drying,,,,,,
+stt,0,0x8,32,discharge,Status Discharge,4,1,0,RO,WO,,,,TRUE,stt_discharge,,,,,,
+stt,0,0x8,32,rfu,Reserved for Future Use,5,27,0,,,,,,,,TRUE,,,,,
